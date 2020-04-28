@@ -30,7 +30,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
                     Note current = (Note) containerView.getTag();
                     Intent intent = new Intent(v.getContext(), NoteActivity.class);
                     intent.putExtra("id",   current.id);
-                    intent.putExtra("contents", current.contents);
+                    intent.putExtra("content", current.content);
 
                     v.getContext().startActivity(intent);
                 }
@@ -52,7 +52,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
     @Override
     public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
         Note current = notes.get(position);
-        holder.textView.setText(current.contents);
+        holder.textView.setText(current.content);
         holder.containerView.setTag(current);
     }
 

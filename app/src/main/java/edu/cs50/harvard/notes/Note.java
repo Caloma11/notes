@@ -9,8 +9,8 @@ public class Note {
     @PrimaryKey
     public int id;
 
-    @ColumnInfo(name = "contents")
-    public String contents;
+    @ColumnInfo(name = "content")
+    public String content;
 
 
 }
