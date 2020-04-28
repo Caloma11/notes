@@ -17,9 +17,9 @@ public class NoteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_note);
 
         editText = findViewById(R.id.note_edit_text);
-        String contents = getIntent().getStringExtra("contents");
+        String content = getIntent().getStringExtra("content");
         int id = getIntent().getIntExtra("id", 0);
-        editText.setText(contents);
+        editText.setText(content);
     }
 
     @Override

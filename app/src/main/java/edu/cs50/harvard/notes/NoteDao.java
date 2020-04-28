@@ -8,12 +8,12 @@ import java.util.List;
 
 @Dao
 public interface NoteDao {
-    @Query("INSERT INTO notes (contents) VALUES ('New note')")
+    @Query("INSERT INTO notes (content) VALUES ('New note')")
     void create();
 
     @Query("SELECT * FROM notes")
     List<Note> getAllNotes();
 
-    @Query("UPDATE notes SET contents = :contents WHERE id = :id")
-    void save(String contents, int id);
+    @Query("UPDATE notes SET content = :content WHERE id = :id")
+    void save(String content, int id);
 }
