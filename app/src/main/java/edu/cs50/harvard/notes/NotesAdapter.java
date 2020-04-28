@@ -23,11 +23,11 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
             super(view);
             containerView = view.findViewById(R.id.note_row);
             textView = view.findViewById(R.id.note_row_text);
-            final Note current = (Note) containerView.getTag();
 
             containerView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Note current = (Note) containerView.getTag();
                     Intent intent = new Intent(v.getContext(), NoteActivity.class);
                     intent.putExtra("id",   current.id);
                     intent.putExtra("contents", current.contents);
