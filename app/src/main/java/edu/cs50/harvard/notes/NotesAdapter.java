@@ -1,5 +1,6 @@
 package edu.cs50.harvard.notes;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,18 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
             super(view);
             containerView = view.findViewById(R.id.note_row);
             textView = view.findViewById(R.id.note_row_text);
+            final Note current = (Note) containerView.getTag();
+
+            containerView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), NoteActivity.class);
+                    intent.putExtra("id",   current.id);
+                    intent.putExtra("contents", current.contents);
+
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
     }
 
@@ -40,6 +53,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
     public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
         Note current = notes.get(position);
         holder.textView.setText(current.contents);
+        holder.containerView.setTag(current);
     }
 
     @Override
