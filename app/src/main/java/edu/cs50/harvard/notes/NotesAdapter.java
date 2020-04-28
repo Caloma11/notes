@@ -46,4 +46,9 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
     public int getItemCount() {
         return notes.size();
     }
+
+    public void reload() {
+        notes = MainActivity.database.noteDao().getAllNotes();
+        notifyDataSetChanged();
+    }
 }
