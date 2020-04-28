@@ -9,7 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-//import edu.cs50.harvard.notes.R;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHolder> {
     public static class NoteViewHolder extends RecyclerView.ViewHolder {
@@ -23,12 +25,25 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
         }
     }
 
+    private List<Note> notes = new ArrayList<>();
+
     @NonNull
     @Override
     public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.note_row, parent, false);
 
-        return noteViewHolder(view);
+        return new NoteViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
+        Note current = notes.get(position);
+        holder.textView.setText(current.contents);
+    }
+
+    @Override
+    public int getItemCount() {
+        return notes.size();
     }
 }
